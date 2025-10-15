@@ -1,0 +1,11 @@
+#!/bin/bash
+# run relevant scripts before nginx logs are rotated
+# from /usr/alifeee/nginx-user-dashboard/
+# this file to be placed in /etc/logrotate.d/httpd-prerotate
+# it has no extension as run-parts ignores files with "."
+
+# make history CSV
+/usr/alifeee/nginx-user-dashboard/log-to-csv.sh
+
+# update HTML file
+/usr/alifeee/nginx-user-dashboard/history-to-html.sh

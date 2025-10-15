@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>pi access logs</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+<style>
+td {
+  border: 1px black solid;
+}
+section {
+  margin: 0 1rem 1rem;
+}
+table {
+  text-align: center
+}
+
+/* thick borders */
+td:nth-child(2) {
+  border-right-width: 4px;
+}
+.first-of-date td {
+  border-top-width: 4px;
+}
+tr:last-child td {
+  border-bottom-width: 4px;
+}
+td:first-child {
+  border-left-width: 4px;
+}
+td:last-child {
+  border-right-width: 4px;
+}
+</style>
+</head>
+<body>
+<section id="logs">
+<h1>Access logs</h1>
+<p>
+  for <a href="https://alifeee.servehalflife.com/">https://alifeee.servehalflife.com/</a>
+</p>
+<table>
+<tr class="first-of-date">
+<td rowspan=2>date</td><td rowspan=2>name</td>
+<td colspan=24>time of day (hour)</td>
+</tr>
+<tr>
+<td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td></tr>
+<tr class="first-of-date">
+<td>15/Oct/2025</td><td>alifeee</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>27</td><td>6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr>
+<td>15/Oct/2025</td><td>rachel</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>63</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr>
+<td>15/Oct/2025</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>15</td><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr class="first-of-date">
+<td>16/Oct/2025</td><td>alifeee</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>42</td><td>11</td><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr>
+<td>16/Oct/2025</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td><td></td><td></td><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td><td>4</td><td></td><td></td><td>2</td><td></td><td></td></tr>
+</table>
+</section>
+</body>
