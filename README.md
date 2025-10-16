@@ -44,6 +44,9 @@ sudo mkdir -p /etc/logrotate.d/http-prerotate
 sudo ln -s /usr/alifeee/nginx-user-dashboard/nginx-user-dashboard /etc/logrotate.d/http-prerotate/nginx-user-dashboard
 # set up symlink to HTML file
 sudo ln -s /usr/alifeee/nginx-user-dashboard/history.html /var/www/html/access.html
+# set up permissions
+sudo touch history.html
+sudo chown a+w /usr/alifeee/nginx-user-dashboard/history.{csv,html}
 ```
 
 folders and files:

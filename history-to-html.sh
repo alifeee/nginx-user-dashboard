@@ -1,7 +1,7 @@
 #!/bin/bash
 # convert CSV to HTML table
 
-source .env
+source /usr/alifeee/nginx-user-dashboard/.env
 
 history="${1:-/usr/alifeee/nginx-user-dashboard/history.csv}"
 html="${2:-/usr/alifeee/nginx-user-dashboard/history.html}"
