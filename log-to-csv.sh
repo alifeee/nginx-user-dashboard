@@ -9,7 +9,7 @@ history="${2:-/usr/alifeee/nginx-user-dashboard/history.csv}"
 if [[ ! -f "${history}" ]]; then
   awk 'BEGIN {
     printf "date,name"
-    for (h=0;h<24;h++) {printf ",%s", h}
+    for (h=0;h<24;h++) {printf ",%02d", h}
     printf "\n"
   }' \
   > "${history}"
@@ -40,9 +40,10 @@ cat "${log}" \
     split($4, timeparts, /:|\[/)
     date=timeparts[2]
     hour=timeparts[3]
-    # printf "%s\t%s%s\n", name, $4, $5
+    # printf "%s %s %s\n", name, $4, $5
     # printf "  date: %s\n", date
     # printf "  hour: %s\n", hour
+    # printf "  keying %s\n", name ":" date ":" hour
     names[name] = 1
     dates[date] = 1
     t[name ":" date ":" hour] += 1
@@ -51,7 +52,9 @@ cat "${log}" \
       for (n in names) {
         printf "%s,%s", d, n
         for (h=0;h<24;h++) {
-          printf ",%s", t[n ":" d ":" h]
+          hr = sprintf("%02d", h) # pad 0s
+          # printf "accessing key: %s\n", n ":" d ":" hr
+          printf ",%s", t[n ":" d ":" hr]
         }
         printf "\n"
       }
