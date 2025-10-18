@@ -55,6 +55,12 @@ sudo ln -s /usr/alifeee/nginx-user-dashboard/history.html /var/www/html/access.h
 # set up permissions
 sudo touch history.html
 sudo chown a+w /usr/alifeee/nginx-user-dashboard/history.{csv,html}
+# allow logrotate to write to files in this directory
+sudo sed -i \
+  '/ProtectSystem=full/a # exclude nginx logging directory from write-protection\n/usr/alifeee/nginx-user-dashboard' \
+   /lib/systemd/system/logrotate.service
+sudo systemctl restart logrotate.service
+sudo systemctl daemon-reload
 
 # test log rotation (-d to debug)
 sudo cp -a /var/log/nginx/ /var/log/nginx.bak/
