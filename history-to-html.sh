@@ -24,6 +24,8 @@ cat > "${html}" << EOHTML
 <style>
 td {
   border: 1px black solid;
+  padding-right: 0.6rem;
+  padding-left: 0.6rem;
 }
 section {
   margin: 0 1rem 1rem;
@@ -35,6 +37,9 @@ table {
 /* thick borders */
 td:nth-child(2) {
   border-right-width: 4px;
+}
+tr:nth-child(2) td:nth-child(2) {
+  border-right-width: 1px;
 }
 .first-of-date td {
   border-top-width: 4px;
@@ -72,7 +77,7 @@ cat "${history}" \
     } else {
       print "<tr>"
     }
-    for (i=1;i<NF;i++) {
+    for (i=1;i<=NF;i++) {
       if (NR==1 && i < 3) continue
       printf "<td>%s</td>", $i
     }
