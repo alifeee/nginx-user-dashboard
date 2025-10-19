@@ -3,7 +3,7 @@
 
 # files
 log="${1:-/var/log/nginx/access.log}"
-history="${2:-/usr/alifeee/nginx-user-dashboard/history.csv}"
+history="${2:-/var/log/nginx/history.csv}"
 
 # create blank CSV if not exist
 if [[ ! -f "${history}" ]]; then

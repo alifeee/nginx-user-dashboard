@@ -47,20 +47,13 @@ done!
 # clone files
 mkdir -p /usr/alifeee/
 git clone git@github.com:alifeee/nginx-user-dashboard.git /usr/alifeee/nginx-user-dashboard
-# set up symlinks to scripts
+# set up symlinks to script
 sudo mkdir -p /etc/logrotate.d/httpd-prerotate
 sudo ln -s /usr/alifeee/nginx-user-dashboard/nginx-user-dashboard /etc/logrotate.d/httpd-prerotate/nginx-user-dashboard
-# set up symlink to HTML file
-sudo ln -s /usr/alifeee/nginx-user-dashboard/history.html /var/www/html/access.html
-# set up permissions
-sudo touch history.html
-sudo chown a+w /usr/alifeee/nginx-user-dashboard/history.{csv,html}
-# allow logrotate to write to files in this directory
-sudo sed -i \
-  '/ProtectSystem=full/a # exclude nginx logging directory from write-protection\n/usr/alifeee/nginx-user-dashboard' \
-   /lib/systemd/system/logrotate.service
-sudo systemctl restart logrotate.service
-sudo systemctl daemon-reload
+# set up symlinks to files
+sudo ln -s /var/log/nginx/history.html /var/www/html/access.html
+sudo ln -s /var/log/nginx/history.csv /usr/alifeee/nginx-user-dashboard/history.csv
+sudo ln -s /var/log/nginx/history.html /usr/alifeee/nginx-user-dashboard/history.html
 
 # test log rotation (-d to debug)
 sudo cp -a /var/log/nginx/ /var/log/nginx.bak/

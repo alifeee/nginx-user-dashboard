@@ -3,8 +3,8 @@
 
 source /usr/alifeee/nginx-user-dashboard/.env
 
-history="${1:-/usr/alifeee/nginx-user-dashboard/history.csv}"
-html="${2:-/usr/alifeee/nginx-user-dashboard/history.html}"
+history="${1:-/var/log/nginx/history.csv}"
+html="${2:-/var/log/nginx/history.html}"
 
 echo "writing html" 2>&1
 
