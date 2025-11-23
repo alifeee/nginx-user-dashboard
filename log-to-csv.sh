@@ -4,6 +4,7 @@
 # files
 log="${1:-/var/log/nginx/access.log}"
 history="${2:-/var/log/nginx/history.csv}"
+userfile="${3:-/etc/nginx/.htpasswd}"
 
 # create blank CSV if not exist
 if [[ ! -f "${history}" ]]; then
@@ -23,6 +24,11 @@ if [[ $(cat "${log}" | wc -l) == 0 ]]; then
   exit 0
 fi
 
+# parse allowable names from .htpasswd (brian,ellie,kris)
+allowed_names=$(
+  cat "${userfile}" | awk -F':' '{printf "%s,", $1}'
+)
+
 # begin
 date >&2
 echo "saving nginx summary from ${log}" >&2
@@ -31,12 +37,21 @@ echo "saving nginx summary from ${log}" >&2
 # name,…,12,13,14,15,16
 # alifeee,…,,15,4,,,
 cat "${log}" \
-  | awk -F' ' 'BEGIN {
+  | awk -v pwdnames="${allowed_names}" -F' ' 'BEGIN {
     delete names
     delete dates
     delete t
+    delete goodnames
+    split(pwdnames, pwdnames_arr, ",")
+    goodnames["-"] = 1
+    for (ii in pwdnames_arr) {
+      goodnames[pwdnames_arr[ii]] = 1
+    }
   } {
     name=$3
+    if (!goodnames[name]) {
+      name="other (spam)"
+    }
     split($4, timeparts, /:|\[/)
     date=timeparts[2]
     hour=timeparts[3]
