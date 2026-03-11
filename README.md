@@ -1,3 +1,5 @@
+> [!CAUTION]
+> MOVED! see <https://git.alifeee.net/nginx-user-dashboard/about/>
 # Simple nginx access log page
 
 Designed for an `nginx` setup that expects login from multiple users using HTTP basic authentication.
